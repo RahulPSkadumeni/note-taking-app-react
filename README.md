@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## features
 
-- create & update Page
+- create and update notes
 - delete option
 - search by title,and text
 - filter by category
@@ -21,3 +21,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - createBrowserRouter for routing
 - custom error page
 - validation
+- pagination
+
+## Live Link
+
+[Live link](https://note-taking-app-react-ahzfu6sc2-rahulpskadumeni.vercel.app/)
