@@ -1,5 +1,4 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
 
 type Props = {};
 
@@ -28,6 +27,18 @@ const Header = (props: Props) => {
               </svg>
             </button>
           </div>
+          <div>
+            <div className="hidden lg:flex items-center">
+              <input
+                type="text"
+                placeholder="Search"
+                className="bg-gray-200 text-gray-800 rounded-full py-2 px-4 mr-2 focus:outline-none"
+              />
+              <button className="bg-indigo-600 text-white py-2 px-4 rounded-full">
+                Search
+              </button>
+            </div>
+          </div>
           <ul className="hidden lg:flex space-x-4">
             <li className="text-white hover:text-gray-300 cursor-pointer">
               Home
@@ -42,6 +53,7 @@ const Header = (props: Props) => {
               Contact
             </li>
           </ul>
+          {/* Search bar for larger screens */}
         </div>
       </div>
       {/* Mobile menu */}
@@ -60,6 +72,17 @@ const Header = (props: Props) => {
             Contact
           </li>
         </ul>
+        {/* Search bar for smaller screens */}
+        <div className="mt-2">
+          <input
+            type="text"
+            placeholder="Search"
+            className="w-full bg-gray-200 text-gray-800 rounded-full py-2 px-4 focus:outline-none"
+          />
+          <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-full mt-2">
+            Search
+          </button>
+        </div>
       </div>
     </nav>
   );

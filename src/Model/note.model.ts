@@ -5,3 +5,8 @@ export interface NotesItem {
   color: string;
   date: string;
 }
+
+export interface RouteParams {
+  id: string;
+  [key: string]: string;
+}

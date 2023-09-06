@@ -9,7 +9,7 @@ type Inote = {
 
 const Notes: React.FC<Inote> = ({ note, handleDelete }) => {
   return (
-    <div>
+    <>
       <article className="flex max-w-xl flex-col items-start justify-between shadow-lg  bg-stone-100 m-5 p-3">
         <div className="flex items-center gap-x-4 text-xs">
           <time dateTime={note.title} className="text-gray-500">
@@ -37,7 +37,7 @@ const Notes: React.FC<Inote> = ({ note, handleDelete }) => {
           Delete
         </button>
       </article>
-    </div>
+    </>
   );
 };
 
