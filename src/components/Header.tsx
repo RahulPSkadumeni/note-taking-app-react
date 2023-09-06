@@ -32,19 +32,17 @@ const Header = (props: Props) => {
     navigate("/search", { state: { searchResults: filteredNote } });
   };
 
-  const navtoCreate = () => {
-    navigate("/create");
-  };
+  const navtoCreate = () => {};
 
-  const navtoHome = () => {
-    navigate("/");
-  };
+  const navtoHome = () => {};
   return (
     <nav className="bg-gray-500 p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div
-            onClick={navtoHome}
+            onClick={() => {
+              navigate("/");
+            }}
             className="text-white text-2xl font-bold flex flex-row cursor-pointer"
           >
             <img
@@ -78,7 +76,7 @@ const Header = (props: Props) => {
 
           <div>
             <div className="hidden lg:flex items-center">
-              {/* <input
+              <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -90,13 +88,15 @@ const Header = (props: Props) => {
                 className="bg-indigo-600 text-white py-2 px-4 rounded-full"
               >
                 Search
-              </button> */}
+              </button>
             </div>
           </div>
 
           <ul className="hidden lg:flex space-x-4">
             <li
-              onClick={navtoCreate}
+              onClick={() => {
+                navigate("/create");
+              }}
               className=" bg-emerald-600 m-2  p-2  rounded-full text-white  cursor-pointer"
             >
               Add Note

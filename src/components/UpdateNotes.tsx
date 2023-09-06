@@ -101,6 +101,12 @@ const UpdateNotes: React.FC = () => {
                 {error}
               </div>
             )}
+            <label
+              htmlFor="title"
+              className="block text-lg  font-semibold text-left   text-gray-700  "
+            >
+              Title
+            </label>
             <input
               type="text"
               id="title"
@@ -113,7 +119,17 @@ const UpdateNotes: React.FC = () => {
             />
           </div>
           <div>
-            <select value={selectedCategory} onChange={handleCategoryChange}>
+            <label
+              htmlFor="title"
+              className="block text-lg  font-medium text-left   text-gray-700  "
+            >
+              category
+            </label>
+            <select
+              className="p-2 rounded-lg "
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
               <option value="">Select a Category</option>
               {categories.map((category, index) => (
                 <option key={index} value={category}>
@@ -126,7 +142,7 @@ const UpdateNotes: React.FC = () => {
           <div>
             <label
               htmlFor="text"
-              className="block  text-left  text-sm font-medium text-gray-700"
+              className="block  text-left  text-lg font-medium text-gray-700"
             >
               Text
             </label>

@@ -100,13 +100,13 @@ const NotesList = () => {
   return (
     <div>
       <Header />
-      <h1 className="text-3xl p-4  m-5  bg-orange-200 shadow-md  font-semibold">
+      <h1 className="text-3xl p-4  m-5  bg-orange-200 rounded-full shadow-md  font-semibold">
         Notes
       </h1>
       <div>
         <label htmlFor="category">Select a category: </label>
         <select
-          className="pl-2 pr-2 p-1 m-2 rounded-3xl "
+          className="pl-2 pr-2 p-1 m-2 rounded-3xl bg-slate-200 "
           id="category"
           name="category"
           value={selectedCategory}

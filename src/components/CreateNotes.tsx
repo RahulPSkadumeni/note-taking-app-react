@@ -85,6 +85,13 @@ const CreateNotes = () => {
                 {error}
               </div>
             )}
+
+            <label
+              htmlFor="title"
+              className="block text-lg  text-left   text-gray-700  "
+            >
+              Titile
+            </label>
             <input
               type="text"
               id="title"
@@ -92,12 +99,18 @@ const CreateNotes = () => {
               placeholder="heading"
               value={title}
               onChange={handleTitleChange}
-              className="mt-5 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // required
             />
           </div>
+          <label
+            htmlFor="title"
+            className="block text-lg  text-left   text-gray-700  "
+          >
+            Category
+          </label>
           <select
-            className="mt-5 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className=" p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
