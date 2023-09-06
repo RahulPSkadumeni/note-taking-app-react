@@ -17,5 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - delete option
 - search by title,and text
 - filter by category
-- redux-tookit for state management
+- redux-toolkit for state management
 - createBrowserRouter for routing
+- custom error page
+- validation

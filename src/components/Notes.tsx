@@ -35,11 +35,11 @@ const Notes: React.FC<Inote> = ({ note, handleDelete }) => {
               <time dateTime={note.title} className="text-gray-500">
                 {note.date}
               </time>
-              <a className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
-                {note.category}
-              </a>
             </div>
           </div>
+          <a className=" pl-2 pr-2 rounded-full bg-gray-50  text-gray-600 hover:bg-gray-100">
+            {note.category}
+          </a>
           <div className="group relative">
             <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
               <a>

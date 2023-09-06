@@ -33,15 +33,20 @@ const CreateNotes = () => {
     // You can handle saving the note data here
     console.log("Title:", title);
     console.log("Text:", text);
-
-    if (title === "") {
-      setError("Enter a title");
+    let isTitle: boolean = /^(?!^\s+$)[a-zA-Z0-9\s]{5,}$/.test(title);
+    let isText: boolean =
+      /^(?!\s+$)[a-zA-Z0-9!@#$%^&*()-_+=\[{\]};:'",.<>?/\\| ]{5,250}$/.test(
+        text
+      );
+    console.log(isText, "isText");
+    if (!isTitle) {
+      setError("Enter a title, minimum of 5 characters ");
       return;
     } else if (selectedCategory === "") {
       setError("select a category");
       return; // D // Do not reset fields
-    } else if (text === "") {
-      setError("Text is empty");
+    } else if (!isText) {
+      setError("Text should be min 5 characters ,maximum 250");
       return; // Do not reset fields
     } else {
       setError(""); // Clear any previous error messages

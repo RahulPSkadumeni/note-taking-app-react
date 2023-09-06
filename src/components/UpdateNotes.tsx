@@ -40,25 +40,7 @@ const UpdateNotes: React.FC = () => {
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(e.target.value);
   };
-  function validation(
-    title: string,
-    id: string,
-    text: string,
-    selectedCategory: string
-  ): any {
-    if (title === "") {
-      setError("Enter a title");
-      return; // Do not reset fields
-    } else if (text === "") {
-      setError("Text is empty");
-      return;
-    } else if (selectedCategory === "") {
-      setError("select a category");
-      return; // D // Do not reset fields
-    } else {
-      setError(""); // Clear any previous error messages
-    }
-  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("first");
@@ -67,7 +49,25 @@ const UpdateNotes: React.FC = () => {
     console.log("text:", text);
 
     console.log("date:", Date);
-    validation(title, validId, text, selectedCategory);
+
+    let isTitle: boolean = /^(?!^\s+$)[a-zA-Z0-9\s]{5,}$/.test(title);
+    let isText: boolean =
+      /^(?!\s+$)[a-zA-Z0-9!@#$%^&*()-_+=\[{\]};:'",.<>?/\\| ]{5,250}$/.test(
+        text
+      );
+    console.log(isText, "isText");
+    if (!isTitle) {
+      setError("Enter a title, minimum of 5 characters ");
+      return;
+    } else if (selectedCategory === "") {
+      setError("select a category");
+      return; // D // Do not reset fields
+    } else if (!isText) {
+      setError("Text should be min 5 characters ,maximum 250");
+      return; // Do not reset fields
+    } else {
+      setError(""); // Clear any previous error messages
+    }
     const newNote: NotesItem = {
       id: validId, // Use the id from route parameters
       title: title,
@@ -124,26 +124,25 @@ const UpdateNotes: React.FC = () => {
               // required
             />
           </div>
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-lg  font-medium text-left   text-gray-700  "
-            >
-              category
-            </label>
-            <select
-              className="p-2 rounded-lg "
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
-              <option value="">Select a Category</option>
-              {categories.map((category, index) => (
-                <option key={index} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
+
+          <label
+            htmlFor="title"
+            className="block text-lg  text-left   text-gray-700  "
+          >
+            category
+          </label>
+          <select
+            className=" p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            <option value="">Select a Category</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
 
           <div>
             <label
