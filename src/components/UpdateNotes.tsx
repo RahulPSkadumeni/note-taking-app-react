@@ -40,16 +40,12 @@ const UpdateNotes: React.FC = () => {
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(e.target.value);
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("first");
-    console.log("Title:", title);
-    console.log("id:", id);
-    console.log("text:", text);
-
-    console.log("date:", Date);
-
+  function validation(
+    title: string,
+    id: string,
+    text: string,
+    selectedCategory: string
+  ): any {
     if (title === "") {
       setError("Enter a title");
       return; // Do not reset fields
@@ -62,6 +58,16 @@ const UpdateNotes: React.FC = () => {
     } else {
       setError(""); // Clear any previous error messages
     }
+  }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("first");
+    console.log("Title:", title);
+    console.log("id:", id);
+    console.log("text:", text);
+
+    console.log("date:", Date);
+    validation(title, validId, text, selectedCategory);
     const newNote: NotesItem = {
       id: validId, // Use the id from route parameters
       title: title,

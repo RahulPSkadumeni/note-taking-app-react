@@ -10,12 +10,14 @@ import CreateNotes from "./components/CreateNotes";
 import UpdateNotes from "./components/UpdateNotes";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SearchResult from "./components/SearchResult";
+import Error from "./components/Error";
 
 function App() {
   const appRoutes = createBrowserRouter([
     {
       path: "/",
       element: <NotesList />,
+      errorElement: <Error />,
       children: [],
     },
     {
