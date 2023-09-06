@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../utils/Store";
 import { useDispatch, useSelector } from "react-redux";
 import { updateNotes } from "../utils/NoteSlice";
+import Header from "./Header";
+import { categories } from "../constants/constants";
 
 const UpdateNotes: React.FC = () => {
   const { id } = useParams<RouteParams>() || {};
@@ -17,12 +19,11 @@ const UpdateNotes: React.FC = () => {
     // return;
   }
 
-  console.log(note?.id, "iddddddddddddddddddee");
+  const [selectedCategory, setSelectedCategory] = useState(
+    note?.category || ""
+  );
   const [title, setTitle] = useState<string>(note?.title || "");
   const [text, setText] = useState<string>(note?.text || "");
-  const [backgroundColor, setBackgroundColor] = useState<string>(
-    note?.color || "#ffffff"
-  );
 
   const [error, setError] = useState<string>("");
 
@@ -36,10 +37,8 @@ const UpdateNotes: React.FC = () => {
     setText(e.target.value);
   };
 
-  const handleBackgroundColorChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setBackgroundColor(e.target.value);
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -48,7 +47,7 @@ const UpdateNotes: React.FC = () => {
     console.log("Title:", title);
     console.log("id:", id);
     console.log("text:", text);
-    console.log("colorext:", backgroundColor);
+
     console.log("date:", Date);
 
     if (title === "") {
@@ -56,41 +55,27 @@ const UpdateNotes: React.FC = () => {
       return; // Do not reset fields
     } else if (text === "") {
       setError("Text is empty");
-      return; // Do not reset fields
+      return;
+    } else if (selectedCategory === "") {
+      setError("select a category");
+      return; // D // Do not reset fields
     } else {
       setError(""); // Clear any previous error messages
     }
     const newNote: NotesItem = {
       id: validId, // Use the id from route parameters
       title: title,
+      category: selectedCategory,
       text: text,
-      color: backgroundColor,
+
       date: new Date().toDateString(),
     };
-    // Create a copy of the notes array
+
     dispatch(updateNotes(newNote));
 
-    // Find the index of the note to update
-    // const updatedNoteIndex = updatedNotes.findIndex(
-    //   (existingNote) => existingNote.id === note.id
-    // );
-
-    // if (updatedNoteIndex !== -1) {
-    //   // Update the note in the copied array
-    //   updatedNotes[updatedNoteIndex] = {
-    //     ...note, // Preserve the existing properties
-    //     title,
-    //     text,
-    //     color: backgroundColor,
-    //     date: new Date().toString(),
-    //   };
-
-    //   // Set the state with the updated notes array
-    //   setNotes(updatedNotes);
-    // }
     setTitle("");
     setText("");
-    setBackgroundColor("#ffffff");
+
     navigate("/");
   };
 
@@ -98,10 +83,11 @@ const UpdateNotes: React.FC = () => {
 
   return (
     <>
-      <div className="min-w-md mx-auto m-5 p-4 ">
+      <Header />
+      <div className="flex    m-5 p-4  justify-center">
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 m-5 p-10  border-black bg-gray-300"
+          className="flex-wrap rounded-3xl w-full md:w-1/2  space-y-4 m-5 p-10 border-black bg-gray-300"
         >
           <div>
             <label
@@ -127,22 +113,16 @@ const UpdateNotes: React.FC = () => {
             />
           </div>
           <div>
-            <label
-              htmlFor="backgroundColor"
-              className="block text-sm font-medium  text-left  text-gray-700"
-            >
-              Background Color
-            </label>
-            <input
-              type="color"
-              id="backgroundColor"
-              name="backgroundColor"
-              value={backgroundColor}
-              onChange={handleBackgroundColorChange}
-              className="mt-1 block w-10 "
-            />
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+              <option value="">Select a Category</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
-          {/* <div>{backgroundColor}</div> */}
+
           <div>
             <label
               htmlFor="text"

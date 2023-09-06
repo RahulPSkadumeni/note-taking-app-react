@@ -9,45 +9,9 @@ import NotesList from "./components/NotesList";
 import CreateNotes from "./components/CreateNotes";
 import UpdateNotes from "./components/UpdateNotes";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import SearchResult from "./components/SearchResult";
 
 function App() {
-  // const [notes, setNotes] = useState<NotesItem[]>([
-  //   {
-  //     id: "1",
-  //     title: "Meeting 1",
-  //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  //     color: "red",
-  //     date: new Date().toDateString(),
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "Meeting",
-  //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  //     color: "red",
-  //     date: new Date().toDateString(),
-  //   },
-  //   {
-  //     id: "3",
-  //     title: "Meeting",
-  //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  //     color: "red",
-  //     date: new Date().toDateString(),
-  //   },
-  //   {
-  //     id: new Date().toString(),
-  //     title: "Meeting",
-  //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  //     color: "red",
-  //     date: new Date().toDateString(),
-  //   },
-  //   {
-  //     id: new Date().toString(),
-  //     title: "Meeting5",
-  //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  //     color: "red",
-  //     date: new Date().toDateString(),
-  //   },
-  // ]);
   const appRoutes = createBrowserRouter([
     {
       path: "/",
@@ -64,11 +28,16 @@ function App() {
       element: <UpdateNotes />,
       children: [],
     },
+    {
+      path: "/search",
+      element: <SearchResult />,
+      children: [],
+    },
   ]);
 
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <RouterProvider router={appRoutes} />
       {/*      
       <NotesList />

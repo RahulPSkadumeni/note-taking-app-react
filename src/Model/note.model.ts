@@ -1,8 +1,9 @@
 export interface NotesItem {
   id: string;
   title: string;
+  category: string;
   text: string;
-  color: string;
+
   date: string;
 }
 
